@@ -1,0 +1,85 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Test swagger",
+        "description": "Testing the express swagger API",
+        "version": "1.0.0"
+    },
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "host": "http://localhost:3000",
+    "basePath": "/docs",
+    "components": {
+        "securitySchemes": {
+            "ApiKeyAuth": {
+                "type": "apiKey",
+                "name": "authorization",  
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+      {
+        "ApiKeyAuth": []
+      }
+    ],
+    "paths": {
+        "/sendcode": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "phoneNumber": {"type": "number"}
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Should return number"
+                    },
+                    "400": {
+                        "description": "Should return bad request"
+                    }
+                }
+            }
+        },
+        "/verify": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "phoneNumber": {"type": "number"},
+                                    "code": {"type": "number"}
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Should return string"
+                    }
+                }
+            }
+        },
+        "/controlFlowOfData": {
+            "get": {
+                "description": "Phone number of the user to get",
+                "responses": {
+                    "200": {
+                        "description": "Should return array of object in dataList/text.txt file"
+                    }
+                }
+            }
+        }
+    }
+}
