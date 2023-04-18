@@ -1,6 +1,6 @@
 {
   "name": "sendcode-athentication",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "sample web athentication to access data",
   "main": "index.js",
   "scripts": {
